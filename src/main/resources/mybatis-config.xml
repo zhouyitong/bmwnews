@@ -41,12 +41,12 @@
 	
 	<!-- 类型别名 -->
 	<typeAliases>
-		<typeAlias alias="Page" type="com.xywy.zngj.common.persistence.Page" /><!--分页  -->
+		<typeAlias alias="Page" type="com.bmw.news.common.persistence.Page" /><!--分页  -->
 	</typeAliases>
 	
 	<!-- 插件配置 -->
 	<plugins>
-		<plugin interceptor="com.xywy.zngj.common.persistence.interceptor.PaginationInterceptor" />
+		<plugin interceptor="com.bmw.news.common.persistence.interceptor.PaginationInterceptor" />
     </plugins>
 	
 </configuration>

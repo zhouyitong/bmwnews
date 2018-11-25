@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.xywy.zngj.common.config.Global;
-import com.xywy.zngj.common.persistence.Page;
-import com.xywy.zngj.common.web.BaseController;
-import com.xywy.zngj.common.utils.StringUtils;
+import com.bmw.news.common.config.Global;
+import com.bmw.news.common.persistence.Page;
+import com.bmw.news.common.web.BaseController;
+import com.bmw.news.common.utils.StringUtils;
 import ${packageName}.${moduleName}.entity<#if subModuleName != "">.${subModuleName}</#if>.${ClassName};
 import ${packageName}.${moduleName}.service<#if subModuleName != "">.${subModuleName}</#if>.${ClassName}Service;
 

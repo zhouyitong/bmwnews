@@ -12,7 +12,7 @@
 		<param-value>classpath*:/spring-context*.xml</param-value>
 	</context-param>
 	<listener>
-		<listener-class>com.xywy.zngj.modules.sys.listener.WebContextListener</listener-class>
+		<listener-class>com.bmw.news.modules.sys.listener.WebContextListener</listener-class>
 	</listener>
 	<listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
@@ -51,7 +51,7 @@
 	<!-- PageCache, cache .html suffix.
 	<filter>
 		<filter-name>PageCacheFilter</filter-name>
-		<filter-class>com.xywy.zngj.common.filter.PageCachingFilter</filter-class>
+		<filter-class>com.bmw.news.common.filter.PageCachingFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>PageCacheFilter</filter-name>
@@ -94,7 +94,7 @@
 	<!-- Activiti diagram-view callback filter-->
 <!--	<filter>
 		<filter-name>JSONPFilter</filter-name>
-		<filter-class>com.xywy.zngj.modules.act.rest.servlet.JsonpCallbackFilter</filter-class>
+		<filter-class>com.bmw.news.modules.act.rest.servlet.JsonpCallbackFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>JSONPFilter</filter-name>
@@ -118,7 +118,7 @@
 	<!-- CKFinder -->
 	<servlet>
 		<servlet-name>CKFinderConnectorServlet</servlet-name>
-		<servlet-class>com.xywy.zngj.common.web.CKFinderConnectorServlet</servlet-class>
+		<servlet-class>com.bmw.news.common.web.CKFinderConnectorServlet</servlet-class>
 		<init-param>
 			<param-name>XMLConfig</param-name>
 			<param-value>/WEB-INF/ckfinder.xml</param-value>
@@ -129,7 +129,7 @@
 		</init-param>
 		<init-param>
 			<param-name>configuration</param-name>
-			<param-value>com.xywy.zngj.common.web.CKFinderConfig</param-value>
+			<param-value>com.bmw.news.common.web.CKFinderConfig</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -157,7 +157,7 @@
 	<!-- Userfiles download -->
 	<servlet>
 	  	<servlet-name>UserfilesDownloadServlet</servlet-name>
-	  	<servlet-class>com.xywy.zngj.common.servlet.UserfilesDownloadServlet</servlet-class>
+	  	<servlet-class>com.bmw.news.common.servlet.UserfilesDownloadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	  	<servlet-name>UserfilesDownloadServlet</servlet-name>
@@ -167,7 +167,7 @@
 	<!-- Validate code -->
 	<servlet>
 		<servlet-name>ValidateCodeServlet</servlet-name>
-		<servlet-class>com.xywy.zngj.common.servlet.ValidateCodeServlet</servlet-class>
+		<servlet-class>com.bmw.news.common.servlet.ValidateCodeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ValidateCodeServlet</servlet-name>
