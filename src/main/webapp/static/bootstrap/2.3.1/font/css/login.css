@@ -1,0 +1,61 @@
+@charset "UTF-8";
+html,body,div,h1,h2,h3,h4,h5,h6,p,ul,ol,li,dl,dd,dt,form,input,label,button,textarea,select,option,span,a,img{margin:0;padding:0;font-size:16px;font-family: 'Microsoft YaHei','Siyuan blackbody';-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+/* ********** 重置样式 ********** */ 
+ul,ol{list-style-type:none;}
+a{text-decoration: none;}
+input,button,img{outline:none;border:none;}
+.clearfix:after{display:block;content:'';clear:both;height:0;visibility:hidden;}
+.clearfix{zoom:1;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.overflow{overflow:hidden;}
+.block{display:block;}
+.none{display:none;}
+.inline-block{display:inline-block;}
+.middle{vertical-align:middle;}
+body{width:100%; height:100%; background:url('../images/login_bg.jpg' ) no-repeat 0 0 fixed;-webkit-background-size:cover;-moz-background-size:cover; -ms-background-size:cover;-o-background-size:cover;background-size:cover;}
+.wrap{top:50%;left:50%;margin: -131px 0 0 -487px; width:974px;height:260px; }
+.pull-left {left:0; top:50%;margin-top:-57px; height:114px; }
+.pull-left  p{line-height:1.5em;font-size:56px;/*font-size: 56px;*/ color: #033a85; font-weight: 700; -moz-text-shadow: #FFF 1px 1px;-o-text-shadow: #FFF 1px 1px; -webkit-text-shadow: #fff 1px 1px; -ms-text-shadow: #fff 1px 1px; text-shadow: #FFF 1px 1px;}
+.pull-left .title-last{font-size: 30px; color: #033f8c;}
+.pull-right{ right:0;margin-top:-; width:370px;height:260px; background-color:#fff; -webkit-border-radius:6px; -moz-border-radius:6px; -ms-border-radius:6px; -o-border-radius:6px;border-radius:6px;}
+.form-signin-heading { height:58px;font-size: 22px; line-height: 58px; color: #9cafbd;  font-weight: bold; }   
+.ht{width: 98%; height: 2px;background: #f0f4f7;margin: 0 1%;overflow: hidden;     zoom: 1;}  
+.hent { padding: 20px 54px 0 55px;}
+.second{padding-top:10px;}
+.hent input{ width: 260px; height: 37px;margin-bottom:0;  line-height: 37px;padding-left: 12px;color: #999; border: 1px solid #ccc; }
+form .hent .btn{padding:0;color:#fff;font-weight:700;border-color:#4598e4; }    
+
+
+
+
+  
+   
+   
+   
+    
+    
+
+   
+
+    
+    
+    
+    
+
+    
+   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

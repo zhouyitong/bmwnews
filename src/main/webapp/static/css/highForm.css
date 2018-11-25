@@ -1,0 +1,90 @@
+@charset="utf-8";
+html,body,div,ul,li,a,img,header,h1,h2{margin:0;padding:0;}
+a, a:visited {outline:none;color:#1c4f64;}
+a:hover{text-decoration:none;}
+ul, li, .img-list{list-style:none;}
+#inputForm h4{padding:12px 0 6px;margin-bottom:6px; border-bottom:1px solid #ccc;}
+#contentTable tr td .input-xlarge{width:70%; border:none; background-color:transparent;box-shadow:none; }
+#inputForm ul{list-style:none;margin:0;}
+/*----------------------------
+	Thumbnail
+-----------------------------*/
+.img-list li{position:relative;float:left; padding:8px;width:120px;height:120px;}
+.img-list li span{position:absolute; z-index:10;font-size:30px;right:6px ;top:10px;color:#387DCA;background-color:rgba(0,0,0,.5)}
+.img-list li span:hover{color:#1684c2;}
+.img-list a{position:relative;display:block;width:120px;height:120px;text-decoration:none;
+	border:2px solid #303030;background-position:center center;background-repeat: no-repeat;
+	border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,0.5);background-size:cover;
+	-moz-background-size:cover;-webkit-background-size:cover;
+}
+
+/*----------------------------
+	galleryOverlay
+-----------------------------*/
+#galleryOverlay{display:none;position:fixed;top:0;left:0;z-index:100;width:100%;height:100%;opacity:0;
+	overflow:hidden;background-color:#222;background-color:rgba(0,0,0,0.8);
+	-moz-transition:opacity 1s ease;-webkit-transition:opacity 1s ease; transition:opacity 1s ease;
+}
+/*----------------------------
+	This class will trigger the animation
+-----------------------------*/
+#galleryOverlay.visible{opacity:1;}
+#gallerySlider{position:absolute;left:0;top:0;width:100%;height:100%;white-space: nowrap;
+	-moz-transition:left 0.4s ease;-webkit-transition:left 0.4s ease;transition:left 0.4s ease;
+}
+#gallerySlider .placeholder{display:inline-block;width:100%;height: 100%;line-height: 1px;text-align: center;
+	background: url("../img/preloader.gif") no-repeat center center;
+}
+
+/* The before element moves the
+ * image halfway from the top */
+
+#gallerySlider .placeholder:before{display: inline-block;content: "";height: 50%;width: 1px;margin-right:-1px;}
+#gallerySlider .placeholder img{position:relative;z-index:100000;cursor:pointer;display: inline-block;height:450px;max-height:100%;vertical-align: middle;}
+#gallerySlider.rightSpring{-moz-animation: rightSpring 0.3s;-webkit-animation: rightSpring 0.3s;}
+#gallerySlider.leftSpring{-moz-animation: leftSpring 0.3s;-webkit-animation: leftSpring 0.3s;}
+
+/* Firefox Keyframe Animations */
+
+@-moz-keyframes rightSpring{
+	0%{margin-left:0px;}
+	50%{	margin-left:-30px;}
+	100%{	margin-left:0px;}
+}
+
+@-moz-keyframes leftSpring{
+	0%{		margin-left:0px;}
+	50%{	margin-left:30px;}
+	100%{	margin-left:0px;}
+}
+
+/* Safari and Chrome Keyframe Animations */
+
+@-webkit-keyframes rightSpring{
+	0%{		margin-left:0px;}
+	50%{	margin-left:-30px;}
+	100%{	margin-left:0px;}
+}
+
+@-webkit-keyframes leftSpring{
+	0%{		margin-left:0px;}
+	50%{	margin-left:30px;}
+	100%{	margin-left:0px;}
+}
+
+/*----------------------------
+	Arrows
+-----------------------------*/
+
+#prevArrow,#nextArrow{position:absolute;top:50%;width:43px;height:58px;margin-top:-29px;opacity:0.5;cursor:pointer;
+	text-decoration:none;border:none;background:url('../img/arrows.png') no-repeat;
+	-moz-transition:opacity 0.2s ease;
+	-webkit-transition:opacity 0.2s ease;
+	transition:opacity 0.2s ease;
+}
+
+#prevArrow:hover, #nextArrow:hover{opacity:1;}
+
+#prevArrow{left:40px;background-position:left top;}
+
+#nextArrow{right:40px;background-position:right top;}

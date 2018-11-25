@@ -1,0 +1,200 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+
+
+
+body {
+    font-family: 'BMWGlobal_light_0' !important;
+    color: #444 !important;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr{
+  border-color: #e5e5e5;
+}
+/* custom */
+a {
+  text-decoration: none;
+  cursor:pointer;
+}
+
+li {
+  list-style: none;
+}
+
+input, textarea, button {
+  border: none;
+  outline: none;
+}
+
+label, input[type="checkbox"], input[type="radio"]{
+  cursor: pointer;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #ffffff;
+}
+
+textarea{
+  resize: none;
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus{    outline: none;    border-color: transparent;    box-shadow:none;}
+
+html,body{
+	color: #444;
+}
+
+
+.panel-default > .panel-heading{
+	color: #fff;
+    background-color: #666;
+}
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #fff;
+    background-color: #666;}
+
+.panel-heading{ border-radius: 0 ; }
+
+
+.breadcrumb_wrap{
+    padding: 0 15px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    background: #666 !important;
+    color: #fff !important;
+}
+.breadcrumb > .active{ color: #fff !important; }
+.btn{ 
+	background-color: #92a2bd !important;
+    border-color: #92a2bd !important;
+    color: #fff !important;
+	 }
+
+
+.header{
+	background: #92a2bd !important;
+    color: #fff !important;
+}
+.header_nav > li {
+    border-right: 1px solid #666 !important;
+}
+.header_nav {
+    border-left: 1px solid #666 !important;
+}
+.header_nav > li > a:hover{
+	background: #92a2bd !important;
+    border: none;
+}
+
+#sideNav .panel-heading > a {
+    background: #666 !important;
+}
+#sideNav .panel-heading > a.collapsed {
+    background: #92a2bd !important;
+}
+#sideNav .submenu a.active, #sideNav .submenu a:hover {
+    background: none !important;
+}
+
+
+
+
+.panel-default{
+    margin: 20px;
+    border-top: 4px solid #92a2bd !important;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #92a2bd !important;
+    border-color: #92a2bd !important;
+    color: #fff !important;
+}
+.pagination > li > a, .pagination > li > span {
+    color: #444 !important;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #92a2bd !important;
+}
+
+.has-feedback .input-group-addon {
+    color: #fff !important;
+    background-color: #92a2bd !important;
+    border-color: #92a2bd !important;
+}
+.form-control {
+    border-color: #92a2bd !important;
+    box-shadow: none !important;
+    color: #444 !important;
+}
+.input_icon{
+ 	border-color: #92a2bd !important;	
+ 	background: #92a2bd !important;
+    color: #444 !important;
+}
+
+.form-control-feedback{
+	color: #92a2bd !important;
+}
+.help-block{     color: #444 !important;
+ }
+
+.nav-tabs > li > a{ color: #444; }
+.nav-tabs > li > a:hover {
+    background-color: #92a2bd !important;
+    color: #fff !important;
+}
+
+.modal-header{
+	color: #fff !important;
+	background: #666 !important;
+}
+.header_nav > li > a:focus{ background: #92a2bd !important; }
+
+#sidebar .panel-default{ border-top: none !important; }

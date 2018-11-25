@@ -1,0 +1,125 @@
+html, body{
+    width: 100%;
+    min-width: 1280px;
+    overflow: auto;
+}
+.header{
+    margin-bottom: 20px;
+    background: #007acf;
+}
+.header_wrap{
+    box-sizing: border-box;
+    height: 260px;
+    padding: 77px 0;
+    background: url("../img/login_bg.png") no-repeat;
+    background-size: cover;
+}
+.header_main{
+    width: 434px;
+    height: 96px;
+    padding-top: 18px;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    text-align: center;
+    color: #fff;
+}
+.platform{
+    margin-bottom: 8px;
+    line-height: 100%;
+    font-size: 38px;
+}
+.platform_english{
+    line-height: 100%;
+    font-size: 16px;
+}
+
+.login_main{
+    width: 420px;
+    margin: 0 auto;
+}
+.input_icon{
+    width: 50px;
+    height: 50px;
+    background: #fafafa;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 48px;
+    border: 1px solid #ededed;
+    border-right: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    font-size: 28px;
+    color: #acacac;
+}
+.login_input{
+    width: 370px;
+    height: 50px;
+    padding: 0 10px;
+    background: #fff;
+    box-sizing: border-box;
+    line-height: 48px;
+    border: 1px solid #ededed;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font-size: 14px;
+    color: #acacac;
+}
+.glyphicon{
+    top: 0;
+}
+
+.verification_item{
+    position: relative;
+    width: 320px;
+}
+.verification_input{
+    width: 320px;
+    height: 50px;
+    padding: 0 10px;
+    background: #fff;
+    box-sizing: border-box;
+    line-height: 48px;
+    border: 1px solid #ededed;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    font-size: 14px;
+    color: #acacac;
+}
+.verification_img{
+    position: absolute;
+    right: -100px;
+    top: 0;
+    width: 100px;
+    height: 50px;
+    background: #fafafa;
+    box-sizing: border-box;
+    border: 1px solid #ededed;
+    border-left: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 28px;
+    color: #acacac;
+}
+.submit{
+    width: 100%;
+    height: 50px;
+}
+.footer{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    position: absolute;
+    bottom: 0;
+}
+
+/*  标单验证样式修改  */
+.form-control-feedback{
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+}

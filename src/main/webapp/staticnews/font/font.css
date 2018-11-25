@@ -1,0 +1,24 @@
+
+@font-face {
+  font-family: 'BMWGlobal_bold_0';
+  src: url('BMWGlobal_bold_0.eot'); /* IE9 Compat Modes */
+  src: url('BMWGlobal_bold_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('BMWGlobal_bold_0.woff') format('woff'), /* 所有现代浏览器 */
+       url('BMWGlobal_bold_0.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('BMWGlobal_bold_0.svg#svgFontName') format('svg'); /* Legacy iOS */
+      
+  font-weight: normal;  
+  font-style: normal;  
+}
+
+@font-face {
+  font-family: 'BMWGlobal_light_0';
+  src: url('BMWGlobal_light_0.eot'); /* IE9 Compat Modes */
+  src: url('BMWGlobal_light_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('BMWGlobal_light_0.woff') format('woff'), /* 所有现代浏览器 */
+       url('BMWGlobal_light_0.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('BMWGlobal_light_0.svg#svgFontName') format('svg'); /* Legacy iOS */
+      
+  font-weight: normal;  
+  font-style: normal;  
+}

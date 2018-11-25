@@ -1,0 +1,144 @@
+.upload-wrap .upload-inner{
+    position: relative;
+    padding: 45px 15px 15px;
+    margin: 15px 0;
+    background-color: #fafafa;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0;
+    margin: 20px;
+}
+.upload-wrap .upload-inner .upload-list{
+    margin: 20px;
+    border: 3px dashed #e6e6e6;
+}
+.upload-wrap .upload-inner .upload-list ul{
+    width: 100%;
+    min-height: 18vw;
+    padding-top: 1.5vw;
+}
+.upload-wrap .upload-inner .upload-list li{
+    display: inline-block;
+    width: 18%;
+    position: relative;
+    border: 1px solid #aaa;
+    margin-right: 2%;
+    height: 15vw;
+}
+.upload-wrap .upload-inner .upload-list li:last-child{
+    margin-right: 0;
+}
+.upload-wrap .upload-inner .upload-list li .img-overlay{
+    position: absolute;
+    width: 100%;
+    height: 3vw;
+    background-color: #000;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+}
+.upload-wrap .upload-inner .upload-list li .img-overlay span{
+    width: 2vw;
+    height: 2vw;
+    display: inline;
+    float: right;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(../img/icons.png) no-repeat;
+    cursor: pointer;
+    background-position: -48px -24px;
+    padding-right: 0.8vw;
+    margin-top: 0.4vw;
+}
+.upload-wrap .upload-inner .upload-list li p{
+    width: 100%;
+    height: 100%;
+}
+.upload-wrap .upload-inner .upload-list li p img{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.upload-wrap .upload-inner .upload-area{
+    height: 350px;
+    text-align: center;
+    background: url(../img/image.png) center 93px no-repeat;
+    color: #cccccc;
+    font-size: 18px;
+}
+.upload-wrap .upload-inner .upload-area .file{
+    position: relative;
+    width: 23vw;
+    height: 6vw;
+    margin: 0 auto;
+}
+.upload-wrap .upload-inner .upload-area .file input{
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+.upload-wrap .upload-inner .upload-area .file button{
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    font-size: 2vw;
+    color: #c30d23;
+    border-radius: 4px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+}
+
+/*涓嬮潰鎸夐挳*/
+.btns{
+    float: right;
+    padding-right: 4vw;
+}
+.btns #files{
+    width: 8vw;
+    height: 3vw;
+    position: relative;
+    display: inline-block;
+}
+.btns #files button{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #c30d23;
+    color: #fff;
+    border: none;
+    z-index: 9;
+}
+.btns #files input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+}
+.btns  .submit{
+    display: inline-block;
+    width: 8vw;
+    height: 3vw;
+    position: relative;
+    vertical-align: top;
+    margin-left: 1.6vw;
+}
+.btns  .submit input{
+    width: 100%;
+    height: 100%;
+    background-color: #f3f4f7;
+    color: #c30d23;
+    border: #aaa;
+}

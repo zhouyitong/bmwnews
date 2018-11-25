@@ -1,0 +1,98 @@
+/*  面包屑样式  */
+.breadcrumb>li+li:before{
+    content: "\003e";
+}
+.breadcrumb_wrap{
+    padding: 0 15px;
+    height: 50px;
+    line-height: 50px;
+    background: #f6f6f6;
+}
+.breadcrumb{
+    padding: 0;
+    background: transparent;
+}
+
+/*  panel-default样式修改  */
+.panel-default{
+    margin: 20px;
+    border-top: 4px solid #007acf;
+}
+/*  form样式  */
+.form_item {
+    margin-bottom: 15px;
+}
+.form_inline{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    width: 300px;
+}
+.form_label {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: 110px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+    position: relative;
+}
+.form_input_block{
+    position: relative;
+    margin-left: 110px;
+    min-height: 36px;
+}
+.form_input_inline{
+    position: relative;
+    padding-left: 110px;
+    margin-right: 10px;
+}
+
+
+.form_input{
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    height: 38px;
+    line-height: 36px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.form_textarea{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.form_select{
+    display: block;
+    width: 100%;
+    padding: 0 20px 0 10px;
+    height: 38px;
+    line-height: 36px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.form_check{
+    line-height: 36px;
+}
+.form_check_inline{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
+

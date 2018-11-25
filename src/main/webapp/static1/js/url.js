@@ -1,0 +1,1 @@
+var urljs = "http://47.94.22.24:8080/direction/a/";

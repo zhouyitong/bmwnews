@@ -1,0 +1,85 @@
+$(function(){
+	// new PCAS("province3","city3","area3");
+	var mychart = echarts.init(document.getElementById("main"));
+	mychart.setOption({
+		title:{
+			text:'用户分类占比图',
+			left:'center',
+		},
+		tooltip:{
+			show:true,
+			trigger:'item',
+			formatter:"{b}:{c}({d}%)"
+		},
+		toolbox:{
+			show:true,
+			orient:'vertical',
+			top:'center',
+			right:'right',
+			feature:{
+				dataView:{readonly:false},
+				restore:{},
+				saveAsImage:{}
+			}
+		},
+		legend:{
+			orient:'horizontal',
+			bottom:'0%',
+			data:[]
+		},
+		series:[{
+			type:'pie',
+			selectedMode:'single',
+			radius:['40%','58%'],
+			color:['#70a5fd', '#fd5053', '#ffe63b', '#2fd4fe','#FCC667','#CC5962'],
+			label:{
+				normal:{
+					position:'inner',
+					formatter:'{d}%',
+					textStyle:{
+						color:'#fff',
+						fontWeight:'bold',
+						fontSize:12
+					}
+				}
+			},
+			labelLine:{
+				show:false
+			},
+			data:[]
+		}]
+	});
+	mychart.showLoading();
+	var week = [];
+	var rs = [];
+	$.ajax({
+		type:"post",
+		url:url,
+		async:true,
+		data:{begin:begin,end:end,date:date,userProvince:userProvince,userCity:userCity,searchCate:searchCate,searchVal:searchVal},
+		dataType:'json',
+		success:function(result){
+				result = result.data;
+				for(var i = 0;i < result.length;i++){
+					week.push(result[i].name);
+					rs.push({
+						name:result[i].name,
+						value:result[i].value
+					})
+				}
+				mychart.hideLoading();
+				mychart.setOption({
+					legend:{
+						data:week
+					},
+					series:[{
+						data:rs
+					}]
+				})
+		},
+		error:function(errorMsg){
+			console.log('图表请求数据失败');
+			mychart.hideLoading();
+		}
+	});
+})

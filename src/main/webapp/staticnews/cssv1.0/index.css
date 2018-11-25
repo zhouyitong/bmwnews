@@ -1,0 +1,168 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    color: #444;
+}
+a{
+    color: #444;
+    text-decoration: none;
+}
+a:hover, a:focus{
+    color: #444;
+    text-decoration: none;
+}
+html,body{ width: 100%; height: 100%; overflow: hidden; }
+/*  wrapper控制版心  */
+.wrapper{
+    width: 100%;
+    min-width: 1280px;
+    height: 100%;
+    position: relative;
+}
+/*   头部   */
+.header{
+    height: 80px;
+    background: #92a2bd;
+    color: #fff;
+    position: absolute; top: 0; left: 0; width: 100%;
+}
+.header_brand{
+    position: relative;
+    height: 80px;
+    padding-left: 20px;
+    line-height: 80px;
+    font-size: 28px;
+    color: #fff;
+}
+.header_brand a{ display: block; width: auto; color: #fff; font-size: 30px; padding: 0 10px; font-family: 'BMWGlobal_bold_0'; }
+.brand_wrap{
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background: #075f9c;
+    border-radius: 50%;
+}
+.brand_wrap .brand{
+    margin: 10px 11px;
+}
+
+
+.header_nav > li > a{
+    width: 136px;
+    padding: 12px 0;
+    border-radius: 0;
+}
+.header_nav > li > a > p{
+    text-align: center;
+    color: #fff;
+}
+.header_nav > li > a > p.icon_wrap{
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+.header_nav > li > a > p.icon_wrap > i{
+    font-size: 28px;
+}
+.header_nav > li > a > p.text_wrap{
+    height: 14px;
+    line-height: 14px;
+}
+
+.header_nav > li.active > a, .header_nav > li.active > a:hover, .header_nav > li > a:hover, .header_nav > li > a:focus, .header_nav .open > a, .header_nav .open > a:hover, .header_nav .open > a:focus{
+    background: #075f9c;
+    border: none;
+}
+.header_nav > li + li{
+    margin-left: 0;
+}
+.dropdown-menu{
+    left: auto;
+    right: 0;
+}
+
+.main{
+    height: calc(100% - 120px);
+}
+
+
+/*  身体部分 */
+/*  用来控制footer  */
+.main_wrap{
+    
+    position: absolute; left: 0; right: 0; top: 80px; bottom: 0;
+}
+
+.main_wrap .main_left{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210px;
+    height: 100%;
+    box-sizing: border-box;
+    /*background: #f8f8f8;*/
+    /*background: #eeefea;*/
+   background: #fff;
+    border-right: 1px solid #DBDBDB;
+    overflow: auto;
+}
+#sideNav{
+    margin-bottom: 0;
+}
+#sideNav .panel{
+    margin: 0;
+    border: none;
+}
+#sideNav .panel-heading{
+    padding: 0;
+
+}
+#sidebar .panel-group{ padding: 10px 0; background: #666; }
+#sideNav .panel-heading > a{
+    display: block;
+    padding: 15px 20px;
+	background: #92a2bd;
+    font-size: 16px;
+    color: #fff;
+    transition: all .2s ease;
+}
+#sideNav .panel-heading > a .glyphicon{
+	top: 3px;
+}
+#sideNav .panel-heading > a.collapsed{
+	background: #666;
+}
+#sideNav .submenu a{
+	transition: all .2s ease;
+    display: block;
+    padding: 10px 10px 10px 40px;
+    background: #fff;
+    font-size: 16px;
+}
+#sideNav .submenu a+a{ border-top: 1px solid #DBDBDB; }
+ #sideNav .panel-heading > a:hover{
+    background: #aaa38e;
+}
+#sideNav .submenu a.active, #sideNav .submenu a:hover{
+    background: #eeefea;
+}
+
+    /*  右侧内容区  */
+.main_right{
+	position: absolute; left: 210px; right: 0; top: 0; bottom: 0;
+}
+
+
+/*  footer  */
+.footer{
+    height: 40px;
+    background: #f8f8f8;
+    line-height: 40px;
+    text-align: center;
+}
+
+
+

@@ -1,0 +1,447 @@
+/* 由 F12 开发人员工具生成。这可能不是原始源文件的准确表示形式。*/
+
+
+.warner-box{
+	width: 120px;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+	/*border: 1px solid rgba(0,0,0,0.2);*/
+	border-radius: 4px;
+	position: fixed;
+	right: 0;
+	top:50%;
+	background-color:#fff;
+	z-index:100;
+}
+.warner-box a:hover{
+	text-decoration: none;
+}
+.warner-box img{
+	width: 2vw;
+	display: block;
+	margin: 5px auto;
+}
+.warner-box p{
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+.warner-box p a{
+	cursor: pointer;
+}
+.warner-box p span{
+	color:#c30d23;
+}
+.showAndhide{
+	position: fixed;
+	right: 120px;
+	top:50%;
+	background-color: #c30d23;
+	width: 2vw;
+	height: 2vw;
+	z-index:100;
+}
+.showAndhide img{
+	width: 1vw;
+	display: block;
+	margin: 0 auto;
+	margin-top: 0.5vw;
+}
+header {
+	border-bottom-color: rgb(243, 244, 247); border-bottom-width: 0.4vw; border-bottom-style: solid;
+}
+.header-con {
+	margin: 0px 1.3vw;
+}
+.header-logo {
+	width: 9.8vw; height: 5vw; padding-right: 1.3vw; border-right-color: rgb(243, 244, 247); border-right-width: 0.4vw; border-right-style: solid; float: left;
+}
+.header-logo a {
+	width: 100%; margin-top: 1.1vw; display: block;
+}
+.header-logo a img {
+	width: 100%; display: block;
+}
+.header-nav {
+	float: left;
+}
+.header-nav li {
+	height: 5vw; float: left;
+}
+.header-nav .show {
+	background-color: rgb(195, 13, 35);
+}
+.header-nav .show a {
+	color: rgb(255, 255, 255);
+}
+.header-personal {
+	height: 3.8vw; margin-top: 1.2vw; float: right; cursor: pointer;
+}
+.search {
+	height: 5vw; border-right-color: rgb(243, 244, 247); border-right-width: 0.4vw; border-right-style: solid; float: left;
+}
+.search img {
+	padding: 0.4vw 1.6vw 0px; width: 1.6vw; margin-top: 1.2vw; cursor: pointer;
+}
+.header-nav li a {
+	width: 8.3vw; text-align: center; color: rgb(51, 51, 51); padding-top: 0.5vw; font-size: 1.25vw; margin-top: 1.2vw; display: block;
+}
+.header-nav li a:hover {
+	color: rgb(195, 13, 35); font-weight: bold;
+}
+.header-nav li .active {
+	color: rgb(195, 13, 35); font-weight: bold;
+}
+.upload {
+	width: 2.8vw; height: 2.8vw; margin-right: 0.52vw; float: left; position: relative;
+}
+.upload input {
+	width: 100%; height: 100%; position: absolute; z-index: 10; cursor: pointer; opacity: 0;
+}
+.upload img {
+	border-radius: 50%; width: 100%; height: 100%;
+}
+.personal {
+	float: left;
+}
+.personal .name {
+	color: rgb(51, 51, 51); font-size: 0.83vw;
+}
+.personal-xiala {
+	top: 5vw; width: 9vw; right: 0px; display: none; position: absolute; z-index: 10; background-color: rgb(195, 13, 35);
+}
+.personal-xiala li {
+	padding: 0.3vw 0px;
+}
+.personal-xiala li:last-child {
+	border-top-color: rgb(243, 244, 247); border-top-width: 1px; border-top-style: solid;
+}
+.personal-xiala li a {
+	color: rgb(255, 255, 255); padding-left: 0.3vw; font-size: 0.5vw;
+}
+.personal .role {
+	color: rgb(102, 102, 102); padding-top: 0.2vw; font-size: 0.72vw;
+}
+.sb-search {
+	width: 16vw; height: 5vw; border-right-color: rgb(243, 244, 247); border-right-width: 0.4vw; border-right-style: solid; float: left; display: none;
+}
+.sb-search form {
+	margin: 1.5vw auto 0px; width: 14.6vw; position: relative;
+}
+.sb-search #search {
+	border-color: rgb(0, 0, 0); width: 11.7vw; height: calc(2vw - 2px); padding-left: 0.5vw; font-size: 0.83vw; border-top-left-radius: 2vw; border-bottom-left-radius: 2vw;
+}
+.sb-search .sb-search-submit {
+	border-color: rgb(195, 13, 35); top: 0px; width: 2.4vw; height: 2vw; right: 0px; position: absolute; border-top-right-radius: 2vw; border-bottom-right-radius: 2vw; background-color: rgb(195, 13, 35);
+}
+.sb-search .sb-icon-search {
+	background: url("../img/white-sousuo.png") 0% 0% / 100% 100%; border: currentColor; top: 0.5vw; width: 0.72vw; height: 0.82vw; right: 0.83vw; position: absolute; cursor: pointer;
+}
+.revise-overlay {
+	left: 0px; top: 0px; width: 100%; height: 100%; display: none; position: fixed; z-index: 100; background-color: rgba(0, 0, 0, 0.3);
+}
+.revise-content {
+	margin: 13% auto 0px; width: 28vw; background-color: rgb(255, 255, 255);
+}
+.revise-content .con-title {
+	padding: 0.5vw 0px; width: 100%; position: relative; background-color: rgb(195, 13, 35);
+}
+.revise-content .con-title span {
+	color: rgb(255, 255, 255); padding-left: 0.4vw; font-size: 0.83vw;
+}
+.revise-content .con-title img {
+	top: 50%; width: 0.83vw; right: 0.4vw; margin-top: -0.4vw; position: absolute;
+}
+.form-text {
+	margin: 0px auto 1.6vw; padding: 0.8vw 0px 0.8vw 0.8vw; border: 1px solid rgb(224, 224, 224); width: 22vw; font-size: 0.72vw; display: block;
+}
+.login-else {
+	position: relative;
+}
+.login-else .getcode {
+	border-width: medium medium medium 1px; border-style: none none none solid; border-color: currentColor currentColor currentColor rgb(224, 224, 224); right: 2.8vw; bottom: 0.9vw; color: rgb(195, 13, 35); padding-left: 1vw; font-size: 0.9vw; position: absolute; background-color: transparent;
+}
+.login-pwd button {
+	background: url("../img/biyan.png") no-repeat center / 100% 100%; width: 1.1vw; height: 0.5vw; bottom: 1.1vw !important; border-left-color: currentColor !important; border-left-width: medium !important; border-left-style: none !important;
+}
+.login-text {
+	display: none;
+}
+.login-text button {
+	background: url("../img/zhengyan.png") no-repeat center / 100% 100%; width: 1.1vw; height: 0.5vw; bottom: 1.1vw !important; border-left-color: currentColor !important; border-left-width: medium !important; border-left-style: none !important;
+}
+.login {
+	margin: 0px auto; padding: 0.5vw 0px; border-radius: 20px; border: currentColor; width: 22vw; color: rgb(255, 255, 255); display: block; background-color: rgb(195, 12, 35);
+}
+.code-alert {
+	padding: 0.2vw 0px; border-radius: 27px; left: 45%; top: 50%; width: 10%; text-align: center; color: rgb(255, 255, 255); font-size: 0.9vw; display: none; position: fixed; background-color: rgba(0, 0, 0, 0.3);
+}
+.revise-overlay .container {
+	padding: 2.5vw 0px;
+}
+.alert-box {
+	text-align: center; color: rgb(195, 13, 35); font-size: 0.4vw;
+}
+.quit-overlay {
+	left: 0px; top: 0px; width: 100%; height: 100%; display: none; position: fixed; z-index: 100; background-color: rgba(0, 0, 0, 0.3);
+}
+.quit-content {
+	margin: 13% auto 0px; width: 28vw; background-color: rgb(255, 255, 255);
+}
+.quit-content .con-title {
+	padding: 0.5vw 0px; width: 100%; position: relative; background-color: rgb(195, 13, 35);
+}
+.quit-content .con-title span {
+	color: rgb(255, 255, 255); padding-left: 0.4vw; font-size: 0.83vw;
+}
+.quit-content .con-title img {
+	top: 50%; width: 0.83vw; right: 0.4vw; margin-top: -0.4vw; position: absolute;
+}
+.quit-content .quit-con {
+	padding-top: 2vw; padding-bottom: 1vw;
+}
+.quit-content .quit-con p {
+	text-align: center; color: rgb(51, 51, 51); font-size: 1.25vw; margin-bottom: 3vw;
+}
+.quit-content .quit-con button {
+	padding: 0.6vw 2vw; border-radius: 0.5vw; border: currentColor; color: rgb(255, 255, 255); font-size: 0.83vw; background-color: rgb(204, 204, 204);
+}
+.quit-content .quit-con button:first-child {
+	margin-right: 1.6vw; background-color: rgb(195, 13, 35);
+}
+.quit-content .quit-con .quit-jihe {
+	margin: 0px auto; width: 14vw;
+}
+.container{
+	width:100% !important;
+}
+.content-wrap aside {
+	width: 12.4vw; height: 100vh; float: left;
+}
+.content-wrap .aside-ul {
+	margin-top: 4vw;
+}
+.content-wrap main {
+	width: 100%; margin-bottom: 2vh; float: left;
+}
+.content-wrap aside .aside-ul ul {
+	display: none;
+}
+.content-wrap aside ul li {
+	background-color: rgb(255, 255, 255);
+}
+.content-wrap aside ul li span {
+	color: rgb(51, 51, 51); padding-top: 0.7vw; padding-bottom: 0.7vw; padding-left: 1.3vw; font-size: 1vw; display: block; position: relative; cursor: pointer;
+}
+.content-wrap aside ul li .selected {
+	color: rgb(195, 13, 35); font-weight: bold; background-color: rgb(243, 244, 247);
+}
+.content-wrap aside ul li span img {
+	top: 50%; right: 1.3vw; position: absolute; transform: translateY(-50%);
+}
+.content-wrap aside ul li span img {
+	width: 0.4vw; display: inline-block;
+}
+.content-wrap .aside-ul ul li a {
+	color: rgb(102, 102, 102); padding-left: 5vw; font-size: 0.9vw;
+}
+.content-wrap .aside-ul .li ul .active {
+	background-color: rgb(243, 244, 247);
+}
+.content-wrap .aside-ul .li ul .active a {
+	color: rgb(195, 13, 35);
+}
+.content-wrap aside ul ul li {
+	padding: 0.7vw 0px;
+}
+.content-wrap .aside-ul .active a {
+	color: rgb(195, 13, 35);
+}
+.content-wrap main .pagination {
+	padding: 48px 0px; display: inline-block; background-color: rgb(255, 255, 255);
+}
+.content-wrap main .pagination li {
+	border-width: 1px medium 1px 1px; border-style: solid none solid solid; border-color: rgb(224, 224, 224) currentColor rgb(224, 224, 224) rgb(224, 224, 224); padding: 0.6vw 0.8vw; border-radius: inherit; float: left; background-color: rgb(255, 255, 255);
+}
+.content-wrap main .pagination li:last-child {
+	border-right-color: rgb(224, 224, 224); border-right-width: 1px; border-right-style: solid;
+}
+.content-wrap main .pagination li:first-child {
+	padding-top: calc(0.6vw - 1px);
+}
+.content-wrap main .pagination li a {
+	color: rgb(102, 102, 102); font-size: 1vw; display: block;
+}
+.content-wrap main .pagination li span {
+	color: rgb(102, 102, 102); font-size: 1vw; display: block; cursor: pointer;
+}
+.content-wrap main .pagination li select {
+	border: currentColor; color: rgb(102, 102, 102); font-size: 0.72vw;
+}
+.content-wrap main {
+	position: relative;
+}
+.content-wrap main .pagination ul {
+	display: inline-block;
+}
+.content-wrap main .pagination .active {
+	font-weight: bold; background-color: rgb(195, 13, 35);
+}
+.content-wrap main .pagination .active span {
+	color: rgb(255, 255, 255);
+}
+
+
+
+ .form-wrapper ul{
+	background-color: #f3f4f7;
+	 padding:0;
+	 margin:0;
+}
+.form-wrapper ul li{
+	float: left;
+	padding: 0.8vw 1.4vw;
+	border: 1px solid #e0e0e0;
+	background-color: #faf9f9;
+	border-bottom: none;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	 list-style:none;
+}
+.form-wrapper ul li a{
+	font-size: 14px;
+	color: #666;
+}
+.form-wrapper ul .active{
+	background-color: #fff;
+	font-weight: bold;
+}
+.form-wrapper ul .active a{
+	color: #333;
+}
+ .breadcrumb{
+	 margin:0;
+	 padding:0;
+	 margin-bottom:8px;
+ }
+/*修改疾病弹窗*/
+.checkdisease-con table{
+	width: 93%;
+	margin: 0 auto;
+	margin-top: 1.6vw;
+}
+.checkdisease-con table tbody{
+	border:1px solid #aaa;
+	border-bottom:none;
+}
+.checkdisease-con table tbody tr{
+	border-bottom:1px solid #aaa;
+}
+.checkdisease-con table tbody tr td{
+	/*border: 1px solid #aaa;*/
+	font-size: 1vw;
+	color: #666;
+	text-align: center;
+	position: relative;
+	border-right:1px solid #aaa;
+}
+.checkdisease-con table tbody tr td input,select,textarea{
+	width: 100%;
+	height: 98%;
+	border: none;
+	resize: none;
+	font-size: 14px;
+	text-align: center;
+}
+.checkdisease-con table tbody tr td .Validform_checktip{
+	position: absolute;
+	top: 50%;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	transform: translateY(-50%);
+}
+.checkdisease-con table tr .label{
+	background-color: #F3F4F7;
+	color: #666;
+	width: 33%;
+	border-right: 1px solid #aaa;
+	border-radius: inherit;
+	line-height: inherit;
+	padding:1vw 0;
+}
+.checkdisease-con table tfoot tr td{
+	text-align: center;
+}
+.checkdisease-con table tfoot tr td input{
+	width: 10vw;
+	padding:1vw 0;
+	background-color: #ccc;
+	color: #fff;
+	font-size: 0.83vw;
+	border: none;
+	border-radius: 5px;
+	margin-top: 1.6vw;
+	background-color:#c30d23;
+}
+.checkdisease-con table tfoot tr td input[type='submit']{
+	background-color: #C30D23;
+}
+.checkdisease-con .file{
+	margin-top:10%;
+}
+.checkdisease-con .file img{
+	display: block;
+	margin:0 auto;
+}
+.checkdisease-con .file{
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+.checkdisease-con .file input{
+	opacity:0;
+	z-index:10;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.checkdisease-con .file img{
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index:1;
+}
+.checkdisease-con .form-bottom input{
+	width: 10vw;
+	padding: 1vw 1.5vw;
+	background-color: #c30d23;
+	color: #fff;
+	border: none;
+	outline: none;
+	margin: 0 auto;
+	display: block;
+	margin-top: 20px;
+	border-radius: 4px;
+}
+.check-baojing{
+	color:#659dfd;
+}
+.check-device{
+	color:#f3cd1e;
+}
+#userControl li a:hover{
+	color:#333;
+}
+table th{
+	cursor: inherit;
+}
+table tr td{
+	cursor: inherit;
+}

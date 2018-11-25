@@ -1,0 +1,38 @@
+/*  面包屑样式  */
+.breadcrumb>li+li:before{
+    content: "\003e";
+}
+.breadcrumb_wrap{
+    padding: 0 15px;
+    height: 50px;
+    line-height: 50px;
+    background: #f6f6f6;
+}
+.breadcrumb{
+    padding: 0;
+    background: transparent;
+}
+
+/*  panel-default样式修改  */
+.panel-default{
+    margin: 20px;
+    border-top: 4px solid #007acf;
+}
+
+/*  callout样式  */
+.callout{
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.callout_info{
+    border-left-color: #1b809e;
+}
+.callout_warning{
+    border-left-color: #d9534f;
+}
+.callout_error{
+    border-left-color: #f0ad4e;
+}

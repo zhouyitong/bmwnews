@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plupload Demo</title>
+    <script src="plupload.full.min.js"></script>
+    <style>
+        #upload_list{
+            height: 200px;
+            border: 1px solid #e5e5e5;
+        }
+    </style>
+    <script src="../jquery/jquery-3.2.0.min.js"></script>
+</head>
+<body>
+
+<div id="upload_list"></div>
+<br>
+<div id="container">
+    <button id="pickfiles">选择文件</button>
+    <button id="uploadfiles">开始上传</button>
+</div>
+
+<br />
+<pre id="console"></pre>
+
+
+<script>
+    // 用变量替换常用的内容
+    var listContainerId = 'upload_list';
+    var selectBtnId = 'pickfiles';
+    var startUploadId = 'uploadfiles';
+    var url = 'upload.php';
+
+    var uploader = new plupload.Uploader({
+        browse_button : selectBtnId,
+        url : url,
+        filters : {
+            max_file_size : '10mb',  //最大只能上传10mb的文件
+            mime_types: [     //只允许上传图片和zip文件
+                {title : "Image files", extensions : "jpg,gif,png"},
+                {title : "Zip files", extensions : "zip"}
+            ],
+            prevent_duplicates: true  //不允许选取重复文件
+        },
+        flash_swf_url : 'Moxie.swf',
+        silverlight_xap_url : 'Moxie.xap',
+
+        init: {
+            /*// Init  当Plupload初始化完成后触发监听函数参数：(uploader)
+            Init: function(uploader){
+                console.log(uploader);
+            },
+            // PostInit 当Init事件发生后触发监听函数参数：(uploader)
+            PostInit: function() {
+                console.log('PostInit');
+                // 清空容器
+                document.getElementById(listContainerId).innerHTML = '';
+
+                // 开始上传
+                document.getElementById(startUploadId).onclick = function() {
+                    console.log('PostInit  == start');
+                    uploader.start();
+                    return false;
+                };
+            },
+            // OptionChanged  当使用Plupload实例的setOption()方法改变当前配置参数后触发监听函数参数：(uploader,option_name,new_value,old_value)
+            OptionChanged: function(uploader,option_name,new_value,old_value){
+                console.log(option_name + '----' + new_value + '----' + old_value);
+            },
+            // Refresh  当调用plupload实例的refresh()方法后会触发该事件，暂时不清楚还有什么其他动作会触发该事件，但据我测试，把文件添加到上传队列后也会触发该事件。监听函数参数：(uploader)
+            Refresh: function(uploader){
+                console.log('Refresh');
+            },
+            // StateChanged  当上传队列的状态发生改变时触发监听函数参数：(uploader)
+            StateChanged: function(uploader){
+                console.log('StateChanged');
+            },
+            // UploadFile  当上传队列中某一个文件开始上传后触发监听函数参数：(uploader,file)
+            UploadFile: function(uploader,file){
+                console.log('UploadFile');
+                console.log(file);
+            },
+            // BeforeUpload  当队列中的某一个文件正要开始上传前触发监听函数参数：(uploader,file)
+            BeforeUpload: function(uploader, file){
+                console.log('BeforeUpload');
+                console.log(file);
+            },
+            // QueueChanged  当上传队列发生变化后触发，即上传队列新增了文件或移除了文件。QueueChanged事件会比FilesAdded或FilesRemoved事件先触发监听函数参数：(uploader)
+            QueueChanged: function(uploader){
+                console.log('QueueChanged');
+            },
+            // UploadProgress
+            UploadProgress: function(up, file) {
+                console.log(file);
+                document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+            },
+            // FilesAdded  当文件添加到上传队列后触发监听函数参数：(uploader,files)
+            FilesAdded: function(up, files) {
+                console.log('FilesAdded');
+                var html = '';
+                plupload.each(files, function(file) {
+                    html += '<div id="' + file.id + '" class="upload_list_item" name="'+ file.name +'">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
+                });
+                $('#' + listContainerId).html(html);
+            },
+            // FilesRemoved  当文件从上传队列移除后触发监听函数参数：(uploader,files)
+            FilesRemoved: function(uploader,files){
+                console.log('FilesRemoved');
+            },
+            // FileFiltered  在每一个文件被添加到上传队列前触发监听函数参数：(uploader,file)
+            FileFiltered: function(uploader,file){
+                console.log('FileFiltered');
+            },
+            // FileUploaded  当队列中的某一个文件上传完成后触发监听函数参数：(uploader,file,responseObject)
+            FileUploaded: function(uploader,file,responseObject){
+                console.log('FileUploaded');
+            },
+            // ChunkUploaded  当使用文件小片上传功能时，每一个小片上传完成后触发监听函数参数：(uploader,file,responseObject)
+            ChunkUploaded: function(uploader,file,responseObject){
+                console.log('ChunkUploaded');
+            },
+            // UploadComplete  当上传队列中所有文件都上传完成后触发监听函数参数：(uploader,files)
+            UploadComplete: function(uploader,files){
+                console.log('UploadComplete');
+            },
+            // Error  当发生错误时触发监听函数参数：(uploader,errObject)
+            Error: function(uploader,errObject) {
+                console.log('Error');
+                console.log(errObject);
+            },
+            // Destroy  当调用destroy方法时触发监听函数参数：(uploader)
+            Destroy: function(uploader){
+                console.log('Destory');
+            }*/
+        }
+    });
+
+    uploader.init();
+
+    // 设置参数
+    // uploader.setOptions({});
+    // 开始上传
+    $('#' + startUploadId).click(function() {
+        uploader.start();
+    });
+
+    //  添加到队列
+    uploader.bind('FilesAdded', function(up, files) {
+        console.log('FilesAdded');
+        var html = '';
+        plupload.each(files, function(file) {
+            html += '<div id="' + file.id + '" class="upload_list_item" name="'+ file.name +'">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
+        });
+        $('#' + listContainerId).html(html);
+    });
+
+    // UploadProgress上传过程中
+    uploader.bind('UploadProgress', function(up, file) {
+        document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+    });
+
+    // UploadComplete 上传结束
+    uploader.bind('UploadComplete',function(uploader,files){
+        alert('UploadComplete');
+        $('#' + listContainerId).html('');
+    });
+
+    // 删除队列文件
+    $('#' + listContainerId).on('dblclick', '.upload_list_item', function(){
+        uploader.removeFile(uploader.files[$(this).index()]);
+        $(this).remove();
+    });
+</script>
+</body>
+</html>

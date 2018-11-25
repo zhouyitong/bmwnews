@@ -1,0 +1,32 @@
+@charset="UTF-8"
+.table {
+	table-layout:fixed;
+}
+.table th,.table td,#box,#box p{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.table th,.table td{
+	text-align: center;
+	cursor: inherit;
+}
+.table td{
+	max-width:100px;
+}
+#chenkbox {
+	width:100%;
+	position: relative;
+}
+#box {
+	position: absolute;
+	display: none;
+	top: 0;
+	height: 100%;
+	text-align: center;
+	color: #fff;
+	background-color: #000;
+	background-color: rgba(0,0,0,0.8);
+	cursor: move;
+}
+

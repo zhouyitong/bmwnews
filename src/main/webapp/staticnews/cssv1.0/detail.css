@@ -1,0 +1,51 @@
+/*  面包屑样式  */
+.breadcrumb>li+li:before{
+    content: "\003e";
+}
+.breadcrumb_wrap{
+    padding: 0 15px;
+    height: 50px;
+    line-height: 50px;
+    background: #f6f6f6;
+}
+.breadcrumb{
+    padding: 0;
+    background: transparent;
+}
+
+/*  panel-default样式修改  */
+.panel-default{
+    margin: 20px;
+    border-top: 4px solid #007acf;
+}
+
+/*  detail样式  */
+.detail_item{
+    font-size: 0px;
+}
+.detail_label{
+    float: left;
+    display: block;
+    width: 110px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: right;
+    position: relative;
+    font-size: 14px;
+}
+.detail_content{
+    padding-left: 130px;
+    min-height: 34px;
+    line-height: 34px;
+    word-break: break-all;
+    font-size: 14px;
+}
+.detail_inline{
+    display: inline-block;
+    vertical-align: top;
+    width: calc(1 / 3 * 100%);
+    min-width: 300px;
+}
+
+
+
