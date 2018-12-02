@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NMediaDao">
+    
+	<sql id="nMediaColumns">
+		a.media_id AS "mediaId",
+		a.media_level AS "mediaLevel",
+		a.media_region AS "mediaRegion",
+		a.media_city AS "mediaCity",
+		a.media_name AS "mediaName",
+		a.media_type AS "mediaType",
+		a.media_category AS "mediaCategory",
+		a.media_group AS "mediaGroup",
+		a.media_page AS "mediaPage",
+		a.media_channel AS "mediaChannel",
+		a.media_is_important AS "mediaIsImportant",
+		a.media_is_dispatch AS "mediaIsDispatch",
+		a.media_logo_image AS "mediaLogoImage",
+		a.media_contact_address AS "mediaContactAddress",
+		a.media_contact_tel AS "mediaContactTel",
+		a.media_create_user AS "mediaCreateUser",
+		a.media_create_time AS "mediaCreateTime",
+		a.media_update_user AS "mediaUpdateUser",
+		a.media_update_time AS "mediaUpdateTime",
+		a.media_is_delete AS "mediaIsDelete"
+	</sql>
+	
+	<sql id="nMediaJoins">
+	</sql>
+    
+	<select id="get" resultType="NMedia">
+		SELECT 
+			<include refid="nMediaColumns"/>
+		FROM n_media a
+		<include refid="nMediaJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NMedia">
+		SELECT 
+			<include refid="nMediaColumns"/>
+		FROM n_media a
+		<include refid="nMediaJoins"/>
+		<where>
+			
+			<if test="mediaRegion != null and mediaRegion != ''">
+				AND a.media_region = #{mediaRegion}
+			</if>
+			<if test="mediaCity != null and mediaCity != ''">
+				AND a.media_city = #{mediaCity}
+			</if>
+			<if test="mediaName != null and mediaName != ''">
+				AND a.media_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{mediaName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{mediaName}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{mediaName},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NMedia">
+		SELECT 
+			<include refid="nMediaColumns"/>
+		FROM n_media a
+		<include refid="nMediaJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_media(
+			media_id,
+			media_level,
+			media_region,
+			media_city,
+			media_name,
+			media_type,
+			media_category,
+			media_group,
+			media_page,
+			media_channel,
+			media_is_important,
+			media_is_dispatch,
+			media_logo_image,
+			media_contact_address,
+			media_contact_tel,
+			media_create_user,
+			media_create_time,
+			media_update_user,
+			media_update_time,
+			media_is_delete
+		) VALUES (
+			#{mediaId},
+			#{mediaLevel},
+			#{mediaRegion},
+			#{mediaCity},
+			#{mediaName},
+			#{mediaType},
+			#{mediaCategory},
+			#{mediaGroup},
+			#{mediaPage},
+			#{mediaChannel},
+			#{mediaIsImportant},
+			#{mediaIsDispatch},
+			#{mediaLogoImage},
+			#{mediaContactAddress},
+			#{mediaContactTel},
+			#{mediaCreateUser},
+			#{mediaCreateTime},
+			#{mediaUpdateUser},
+			#{mediaUpdateTime},
+			#{mediaIsDelete}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_media SET 	
+			media_id = #{mediaId},
+			media_level = #{mediaLevel},
+			media_region = #{mediaRegion},
+			media_city = #{mediaCity},
+			media_name = #{mediaName},
+			media_type = #{mediaType},
+			media_category = #{mediaCategory},
+			media_group = #{mediaGroup},
+			media_page = #{mediaPage},
+			media_channel = #{mediaChannel},
+			media_is_important = #{mediaIsImportant},
+			media_is_dispatch = #{mediaIsDispatch},
+			media_logo_image = #{mediaLogoImage},
+			media_contact_address = #{mediaContactAddress},
+			media_contact_tel = #{mediaContactTel},
+			media_create_user = #{mediaCreateUser},
+			media_create_time = #{mediaCreateTime},
+			media_update_user = #{mediaUpdateUser},
+			media_update_time = #{mediaUpdateTime},
+			media_is_delete = #{mediaIsDelete}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_media
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

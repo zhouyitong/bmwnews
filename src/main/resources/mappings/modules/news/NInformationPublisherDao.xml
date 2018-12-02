@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NInformationPublisherDao">
+    
+	<sql id="nInformationPublisherColumns">
+		a.publisher_id AS "publisherId",
+		a.publisher_name AS "publisherName",
+		a.publisher_create_time AS "publisherCreateTime",
+		a.publisher_create_user AS "publisherCreateUser",
+		a.publisher_photo_image AS "publisherPhotoImage",
+		a.publish_update_time AS "publishUpdateTime",
+		a.publisher_update_user AS "publisherUpdateUser",
+		a.publisher_is_delete AS "publisherIsDelete"
+	</sql>
+	
+	<sql id="nInformationPublisherJoins">
+	</sql>
+    
+	<select id="get" resultType="NInformationPublisher">
+		SELECT 
+			<include refid="nInformationPublisherColumns"/>
+		FROM n_information_publisher a
+		<include refid="nInformationPublisherJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NInformationPublisher">
+		SELECT 
+			<include refid="nInformationPublisherColumns"/>
+		FROM n_information_publisher a
+		<include refid="nInformationPublisherJoins"/>
+		<where>
+			
+			<if test="publisherName != null and publisherName != ''">
+				AND a.publisher_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{publisherName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{publisherName}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{publisherName},'%')</if>
+			</if>
+			<if test="publisherCreateUser != null and publisherCreateUser != ''">
+				AND a.publisher_create_user = #{publisherCreateUser}
+			</if>
+			<if test="publishUpdateTime != null and publishUpdateTime != ''">
+				AND a.publish_update_time = #{publishUpdateTime}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NInformationPublisher">
+		SELECT 
+			<include refid="nInformationPublisherColumns"/>
+		FROM n_information_publisher a
+		<include refid="nInformationPublisherJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_information_publisher(
+			publisher_id,
+			publisher_name,
+			publisher_create_time,
+			publisher_create_user,
+			publisher_photo_image,
+			publish_update_time,
+			publisher_update_user,
+			publisher_is_delete
+		) VALUES (
+			#{publisherId},
+			#{publisherName},
+			#{publisherCreateTime},
+			#{publisherCreateUser},
+			#{publisherPhotoImage},
+			#{publishUpdateTime},
+			#{publisherUpdateUser},
+			#{publisherIsDelete}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_information_publisher SET 	
+			publisher_id = #{publisherId},
+			publisher_name = #{publisherName},
+			publisher_create_time = #{publisherCreateTime},
+			publisher_create_user = #{publisherCreateUser},
+			publisher_photo_image = #{publisherPhotoImage},
+			publish_update_time = #{publishUpdateTime},
+			publisher_update_user = #{publisherUpdateUser},
+			publisher_is_delete = #{publisherIsDelete}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_information_publisher
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

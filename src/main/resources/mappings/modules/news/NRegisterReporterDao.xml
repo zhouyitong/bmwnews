@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NRegisterReporterDao">
+    
+	<sql id="nRegisterReporterColumns">
+		a.reporter_id AS "reporterId",
+		a.reporter_name AS "reporterName",
+		a.reporter_own_media AS "reporterOwnMedia",
+		a.reporter_own_media_name AS "reporterOwnMediaName",
+		a.reporter_is_access AS "reporterIsAccess",
+		a.reporter_access_time AS "reporterAccessTime",
+		a.reporter_registry_time AS "reporterRegistryTime",
+		a.reporter_last_login_time AS "reporterLastLoginTime",
+		a.reporter_birthday AS "reporterBirthday",
+		a.reporter_clothes_size AS "reporterClothesSize",
+		a.reporter_driving_licence AS "reporterDrivingLicence",
+		a.reporter_level AS "reporterLevel",
+		a.reporter_audit_time AS "reporterAuditTime",
+		a.reporter_audit_user_id AS "reporterAuditUserId",
+		a.reporter_audit_user_name AS "reporterAuditUserName",
+		a.reporter_audit_result AS "reporterAuditResult",
+		a.reporter_phone_num AS "reporterPhoneNum",
+		a.reporter_title AS "reporterTitle",
+		a.reporter_email AS "reporterEmail",
+		a.reporter_zip_code AS "reporterZipCode",
+		a.reporter_gender AS "reporterGender",
+		a.reporter_work_tel AS "reporterWorkTel",
+		a.reporter_work_cert AS "reporterWorkCert",
+		a.reporter_identity_num AS "reporterIdentityNum",
+		a.reporter_passport_num AS "reporterPassportNum",
+		a.reporter_home_address AS "reporterHomeAddress",
+		a.reporter_is_have_child AS "reporterIsHaveChild",
+		a.reporter_child_gender AS "reporterChildGender",
+		a.reporter_child_birthday AS "reporterChildBirthday",
+		a.reporter_second_child_gender AS "reporterSecondChildGender",
+		a.reporter_second_child_birthday AS "reporterSecondChildBirthday",
+		a.reporter_other_info AS "reporterOtherInfo",
+		a.reporter_phone_flag AS "reporterPhoneFlag"
+	</sql>
+	
+	<sql id="nRegisterReporterJoins">
+	</sql>
+    
+	<select id="get" resultType="NRegisterReporter">
+		SELECT 
+			<include refid="nRegisterReporterColumns"/>
+		FROM n_register_reporter a
+		<include refid="nRegisterReporterJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NRegisterReporter">
+		SELECT 
+			<include refid="nRegisterReporterColumns"/>
+		FROM n_register_reporter a
+		<include refid="nRegisterReporterJoins"/>
+		<where>
+			
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NRegisterReporter">
+		SELECT 
+			<include refid="nRegisterReporterColumns"/>
+		FROM n_register_reporter a
+		<include refid="nRegisterReporterJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_register_reporter(
+			reporter_id,
+			reporter_name,
+			reporter_own_media,
+			reporter_own_media_name,
+			reporter_is_access,
+			reporter_access_time,
+			reporter_registry_time,
+			reporter_last_login_time,
+			reporter_birthday,
+			reporter_clothes_size,
+			reporter_driving_licence,
+			reporter_level,
+			reporter_audit_time,
+			reporter_audit_user_id,
+			reporter_audit_user_name,
+			reporter_audit_result,
+			reporter_phone_num,
+			reporter_title,
+			reporter_email,
+			reporter_zip_code,
+			reporter_gender,
+			reporter_work_tel,
+			reporter_work_cert,
+			reporter_identity_num,
+			reporter_passport_num,
+			reporter_home_address,
+			reporter_is_have_child,
+			reporter_child_gender,
+			reporter_child_birthday,
+			reporter_second_child_gender,
+			reporter_second_child_birthday,
+			reporter_other_info,
+			reporter_phone_flag
+		) VALUES (
+			#{reporterId},
+			#{reporterName},
+			#{reporterOwnMedia},
+			#{reporterOwnMediaName},
+			#{reporterIsAccess},
+			#{reporterAccessTime},
+			#{reporterRegistryTime},
+			#{reporterLastLoginTime},
+			#{reporterBirthday},
+			#{reporterClothesSize},
+			#{reporterDrivingLicence},
+			#{reporterLevel},
+			#{reporterAuditTime},
+			#{reporterAuditUserId},
+			#{reporterAuditUserName},
+			#{reporterAuditResult},
+			#{reporterPhoneNum},
+			#{reporterTitle},
+			#{reporterEmail},
+			#{reporterZipCode},
+			#{reporterGender},
+			#{reporterWorkTel},
+			#{reporterWorkCert},
+			#{reporterIdentityNum},
+			#{reporterPassportNum},
+			#{reporterHomeAddress},
+			#{reporterIsHaveChild},
+			#{reporterChildGender},
+			#{reporterChildBirthday},
+			#{reporterSecondChildGender},
+			#{reporterSecondChildBirthday},
+			#{reporterOtherInfo},
+			#{reporterPhoneFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_register_reporter SET 	
+			reporter_id = #{reporterId},
+			reporter_name = #{reporterName},
+			reporter_own_media = #{reporterOwnMedia},
+			reporter_own_media_name = #{reporterOwnMediaName},
+			reporter_is_access = #{reporterIsAccess},
+			reporter_access_time = #{reporterAccessTime},
+			reporter_registry_time = #{reporterRegistryTime},
+			reporter_last_login_time = #{reporterLastLoginTime},
+			reporter_birthday = #{reporterBirthday},
+			reporter_clothes_size = #{reporterClothesSize},
+			reporter_driving_licence = #{reporterDrivingLicence},
+			reporter_level = #{reporterLevel},
+			reporter_audit_time = #{reporterAuditTime},
+			reporter_audit_user_id = #{reporterAuditUserId},
+			reporter_audit_user_name = #{reporterAuditUserName},
+			reporter_audit_result = #{reporterAuditResult},
+			reporter_phone_num = #{reporterPhoneNum},
+			reporter_title = #{reporterTitle},
+			reporter_email = #{reporterEmail},
+			reporter_zip_code = #{reporterZipCode},
+			reporter_gender = #{reporterGender},
+			reporter_work_tel = #{reporterWorkTel},
+			reporter_work_cert = #{reporterWorkCert},
+			reporter_identity_num = #{reporterIdentityNum},
+			reporter_passport_num = #{reporterPassportNum},
+			reporter_home_address = #{reporterHomeAddress},
+			reporter_is_have_child = #{reporterIsHaveChild},
+			reporter_child_gender = #{reporterChildGender},
+			reporter_child_birthday = #{reporterChildBirthday},
+			reporter_second_child_gender = #{reporterSecondChildGender},
+			reporter_second_child_birthday = #{reporterSecondChildBirthday},
+			reporter_other_info = #{reporterOtherInfo},
+			reporter_phone_flag = #{reporterPhoneFlag}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_register_reporter
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

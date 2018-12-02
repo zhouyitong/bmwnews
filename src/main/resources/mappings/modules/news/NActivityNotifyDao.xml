@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityNotifyDao">
+    
+	<sql id="nActivityNotifyColumns">
+		a.notify_id AS "notifyId",
+		a.acvitity_id AS "acvitityId",
+		a.notify_content AS "notifyContent",
+		a.notify_send_object AS "notifySendObject",
+		a.notify_is_crontab AS "notifyIsCrontab",
+		a.notify_send_time AS "notifySendTime",
+		a.notify_create_time AS "notifyCreateTime",
+		a.notify_create_user AS "notifyCreateUser",
+		a.notify_update_time AS "notifyUpdateTime",
+		a.notify_update_user AS "notifyUpdateUser",
+		a.notify_version AS "notifyVersion"
+	</sql>
+	
+	<sql id="nActivityNotifyJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivityNotify">
+		SELECT 
+			<include refid="nActivityNotifyColumns"/>
+		FROM n_activity_notify a
+		<include refid="nActivityNotifyJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivityNotify">
+		SELECT 
+			<include refid="nActivityNotifyColumns"/>
+		FROM n_activity_notify a
+		<include refid="nActivityNotifyJoins"/>
+		<where>
+			
+			<if test="notifySendObject != null and notifySendObject != ''">
+				AND a.notify_send_object = #{notifySendObject}
+			</if>
+			<if test="notifyCreateUser != null and notifyCreateUser != ''">
+				AND a.notify_create_user LIKE 
+					<if test="dbName == 'oracle'">'%'||#{notifyCreateUser}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{notifyCreateUser}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{notifyCreateUser},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivityNotify">
+		SELECT 
+			<include refid="nActivityNotifyColumns"/>
+		FROM n_activity_notify a
+		<include refid="nActivityNotifyJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity_notify(
+			notify_id,
+			acvitity_id,
+			notify_content,
+			notify_send_object,
+			notify_is_crontab,
+			notify_send_time,
+			notify_create_time,
+			notify_create_user,
+			notify_update_time,
+			notify_update_user,
+			notify_version
+		) VALUES (
+			#{notifyId},
+			#{acvitityId},
+			#{notifyContent},
+			#{notifySendObject},
+			#{notifyIsCrontab},
+			#{notifySendTime},
+			#{notifyCreateTime},
+			#{notifyCreateUser},
+			#{notifyUpdateTime},
+			#{notifyUpdateUser},
+			#{notifyVersion}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity_notify SET 	
+			notify_id = #{notifyId},
+			acvitity_id = #{acvitityId},
+			notify_content = #{notifyContent},
+			notify_send_object = #{notifySendObject},
+			notify_is_crontab = #{notifyIsCrontab},
+			notify_send_time = #{notifySendTime},
+			notify_create_time = #{notifyCreateTime},
+			notify_create_user = #{notifyCreateUser},
+			notify_update_time = #{notifyUpdateTime},
+			notify_update_user = #{notifyUpdateUser},
+			notify_version = #{notifyVersion}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity_notify
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

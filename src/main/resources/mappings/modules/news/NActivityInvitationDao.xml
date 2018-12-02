@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityInvitationDao">
+    
+	<sql id="nActivityInvitationColumns">
+		a.invitation_id AS "invitationId",
+		a.activity_id AS "activityId",
+		a.invitation_title AS "invitationTitle",
+		a.invitation_content AS "invitationContent",
+		a.invitation_create_user AS "invitationCreateUser",
+		a.invitation_create_time AS "invitationCreateTime",
+		a.invitation_update_user AS "invitationUpdateUser",
+		a.invitation_update_time AS "invitationUpdateTime",
+		a.invitation_is_delete_copy1 AS "invitationIsDeleteCopy1",
+		a.invitation_is_delete AS "invitationIsDelete",
+		a.invitation_version AS "invitationVersion"
+	</sql>
+	
+	<sql id="nActivityInvitationJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivityInvitation">
+		SELECT 
+			<include refid="nActivityInvitationColumns"/>
+		FROM n_activity_invitation a
+		<include refid="nActivityInvitationJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivityInvitation">
+		SELECT 
+			<include refid="nActivityInvitationColumns"/>
+		FROM n_activity_invitation a
+		<include refid="nActivityInvitationJoins"/>
+		<where>
+			
+			<if test="invitationTitle != null and invitationTitle != ''">
+				AND a.invitation_title LIKE 
+					<if test="dbName == 'oracle'">'%'||#{invitationTitle}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{invitationTitle}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{invitationTitle},'%')</if>
+			</if>
+			<if test="invitationCreateTime != null and invitationCreateTime != ''">
+				AND a.invitation_create_time = #{invitationCreateTime}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivityInvitation">
+		SELECT 
+			<include refid="nActivityInvitationColumns"/>
+		FROM n_activity_invitation a
+		<include refid="nActivityInvitationJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity_invitation(
+			invitation_id,
+			activity_id,
+			invitation_title,
+			invitation_content,
+			invitation_create_user,
+			invitation_create_time,
+			invitation_update_user,
+			invitation_update_time,
+			invitation_is_delete_copy1,
+			invitation_is_delete,
+			invitation_version
+		) VALUES (
+			#{invitationId},
+			#{activityId},
+			#{invitationTitle},
+			#{invitationContent},
+			#{invitationCreateUser},
+			#{invitationCreateTime},
+			#{invitationUpdateUser},
+			#{invitationUpdateTime},
+			#{invitationIsDeleteCopy1},
+			#{invitationIsDelete},
+			#{invitationVersion}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity_invitation SET 	
+			invitation_id = #{invitationId},
+			activity_id = #{activityId},
+			invitation_title = #{invitationTitle},
+			invitation_content = #{invitationContent},
+			invitation_create_user = #{invitationCreateUser},
+			invitation_create_time = #{invitationCreateTime},
+			invitation_update_user = #{invitationUpdateUser},
+			invitation_update_time = #{invitationUpdateTime},
+			invitation_is_delete_copy1 = #{invitationIsDeleteCopy1},
+			invitation_is_delete = #{invitationIsDelete},
+			invitation_version = #{invitationVersion}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity_invitation
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

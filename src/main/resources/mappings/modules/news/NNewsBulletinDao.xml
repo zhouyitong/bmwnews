@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NNewsBulletinDao">
+    
+	<sql id="nNewsBulletinColumns">
+		a.bulletin_id AS "bulletinId",
+		a.bulletin_media_type AS "bulletinMediaType",
+		a.bulletin_media_name AS "bulletinMediaName",
+		a.bulletin_reporter_id AS "bulletinReporterId",
+		a.bulletin_reporter_name AS "bulletinReporterName",
+		a.bulletin_publish_time AS "bulletinPublishTime",
+		a.bulletin_word_num AS "bulletinWordNum",
+		a.bulletin_page AS "bulletinPage",
+		a.bulletin_level AS "bulletinLevel",
+		a.bulletin_title AS "bulletinTitle",
+		a.bulletin_url AS "bulletinUrl",
+		a.bulletin_tone AS "bulletinTone",
+		a.bulletin_share_num AS "bulletinShareNum",
+		a.bulletin_create_time AS "bulletinCreateTime",
+		a.bulletin_create_user AS "bulletinCreateUser",
+		a.bulletin_update_time AS "bulletinUpdateTime",
+		a.bulletin_update_user AS "bulletinUpdateUser",
+		a.bulletin_is_delete AS "bulletinIsDelete",
+		a.bulletin_version AS "bulletinVersion"
+	</sql>
+	
+	<sql id="nNewsBulletinJoins">
+	</sql>
+    
+	<select id="get" resultType="NNewsBulletin">
+		SELECT 
+			<include refid="nNewsBulletinColumns"/>
+		FROM n_news_bulletin a
+		<include refid="nNewsBulletinJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NNewsBulletin">
+		SELECT 
+			<include refid="nNewsBulletinColumns"/>
+		FROM n_news_bulletin a
+		<include refid="nNewsBulletinJoins"/>
+		<where>
+			
+			<if test="bulletinMediaName != null and bulletinMediaName != ''">
+				AND a.bulletin_media_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{bulletinMediaName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{bulletinMediaName}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{bulletinMediaName},'%')</if>
+			</if>
+			<if test="bulletinReporterId != null and bulletinReporterId != ''">
+				AND a.bulletin_reporter_id = #{bulletinReporterId}
+			</if>
+			<if test="bulletinPublishTime != null and bulletinPublishTime != ''">
+				AND a.bulletin_publish_time = #{bulletinPublishTime}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NNewsBulletin">
+		SELECT 
+			<include refid="nNewsBulletinColumns"/>
+		FROM n_news_bulletin a
+		<include refid="nNewsBulletinJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_news_bulletin(
+			bulletin_id,
+			bulletin_media_type,
+			bulletin_media_name,
+			bulletin_reporter_id,
+			bulletin_reporter_name,
+			bulletin_publish_time,
+			bulletin_word_num,
+			bulletin_page,
+			bulletin_level,
+			bulletin_title,
+			bulletin_url,
+			bulletin_tone,
+			bulletin_share_num,
+			bulletin_create_time,
+			bulletin_create_user,
+			bulletin_update_time,
+			bulletin_update_user,
+			bulletin_is_delete,
+			bulletin_version
+		) VALUES (
+			#{bulletinId},
+			#{bulletinMediaType},
+			#{bulletinMediaName},
+			#{bulletinReporterId},
+			#{bulletinReporterName},
+			#{bulletinPublishTime},
+			#{bulletinWordNum},
+			#{bulletinPage},
+			#{bulletinLevel},
+			#{bulletinTitle},
+			#{bulletinUrl},
+			#{bulletinTone},
+			#{bulletinShareNum},
+			#{bulletinCreateTime},
+			#{bulletinCreateUser},
+			#{bulletinUpdateTime},
+			#{bulletinUpdateUser},
+			#{bulletinIsDelete},
+			#{bulletinVersion}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_news_bulletin SET 	
+			bulletin_id = #{bulletinId},
+			bulletin_media_type = #{bulletinMediaType},
+			bulletin_media_name = #{bulletinMediaName},
+			bulletin_reporter_id = #{bulletinReporterId},
+			bulletin_reporter_name = #{bulletinReporterName},
+			bulletin_publish_time = #{bulletinPublishTime},
+			bulletin_word_num = #{bulletinWordNum},
+			bulletin_page = #{bulletinPage},
+			bulletin_level = #{bulletinLevel},
+			bulletin_title = #{bulletinTitle},
+			bulletin_url = #{bulletinUrl},
+			bulletin_tone = #{bulletinTone},
+			bulletin_share_num = #{bulletinShareNum},
+			bulletin_create_time = #{bulletinCreateTime},
+			bulletin_create_user = #{bulletinCreateUser},
+			bulletin_update_time = #{bulletinUpdateTime},
+			bulletin_update_user = #{bulletinUpdateUser},
+			bulletin_is_delete = #{bulletinIsDelete},
+			bulletin_version = #{bulletinVersion}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_news_bulletin
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

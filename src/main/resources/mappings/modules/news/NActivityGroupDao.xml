@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityGroupDao">
+    
+	<sql id="nActivityGroupColumns">
+		a.group_id AS "groupId",
+		a.activity_id AS "activityId",
+		a.group_name AS "groupName",
+		a.reporter_id AS "reporterId",
+		a.reporter_name AS "reporterName",
+		a.media_id AS "mediaId",
+		a.media_name AS "mediaName",
+		a.group_create_time AS "groupCreateTime",
+		a.group_create_user AS "groupCreateUser",
+		a.group_update_time AS "groupUpdateTime",
+		a.group_update_user AS "groupUpdateUser",
+		a.group_is_delete AS "groupIsDelete",
+		a.group_is_useable AS "groupIsUseable"
+	</sql>
+	
+	<sql id="nActivityGroupJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivityGroup">
+		SELECT 
+			<include refid="nActivityGroupColumns"/>
+		FROM n_activity_group a
+		<include refid="nActivityGroupJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivityGroup">
+		SELECT 
+			<include refid="nActivityGroupColumns"/>
+		FROM n_activity_group a
+		<include refid="nActivityGroupJoins"/>
+		<where>
+			
+			<if test="reporterName != null and reporterName != ''">
+				AND a.reporter_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{reporterName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{reporterName}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{reporterName},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivityGroup">
+		SELECT 
+			<include refid="nActivityGroupColumns"/>
+		FROM n_activity_group a
+		<include refid="nActivityGroupJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity_group(
+			group_id,
+			activity_id,
+			group_name,
+			reporter_id,
+			reporter_name,
+			media_id,
+			media_name,
+			group_create_time,
+			group_create_user,
+			group_update_time,
+			group_update_user,
+			group_is_delete,
+			group_is_useable
+		) VALUES (
+			#{groupId},
+			#{activityId},
+			#{groupName},
+			#{reporterId},
+			#{reporterName},
+			#{mediaId},
+			#{mediaName},
+			#{groupCreateTime},
+			#{groupCreateUser},
+			#{groupUpdateTime},
+			#{groupUpdateUser},
+			#{groupIsDelete},
+			#{groupIsUseable}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity_group SET 	
+			group_id = #{groupId},
+			activity_id = #{activityId},
+			group_name = #{groupName},
+			reporter_id = #{reporterId},
+			reporter_name = #{reporterName},
+			media_id = #{mediaId},
+			media_name = #{mediaName},
+			group_create_time = #{groupCreateTime},
+			group_create_user = #{groupCreateUser},
+			group_update_time = #{groupUpdateTime},
+			group_update_user = #{groupUpdateUser},
+			group_is_delete = #{groupIsDelete},
+			group_is_useable = #{groupIsUseable}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity_group
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

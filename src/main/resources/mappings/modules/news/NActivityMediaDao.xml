@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityMediaDao">
+    
+	<sql id="nActivityMediaColumns">
+		a.activity_id AS "activityId",
+		a.reporter_id AS "reporterId",
+		a.reporter_name AS "reporterName",
+		a.media_id AS "mediaId",
+		a.media_name AS "mediaName",
+		a.reporter_is_invitation AS "reporterIsInvitation",
+		a.reporter_invitation_time AS "reporterInvitationTime",
+		a.reporter_response_time AS "reporterResponseTime",
+		a.reporter_response_result AS "reporterResponseResult",
+		a.reporter_response_remark AS "reporterResponseRemark",
+		a.reporter_response_update_time AS "reporterResponseUpdateTime",
+		a.reporter_response_update_user AS "reporterResponseUpdateUser",
+		a.reporter_is_sign AS "reporterIsSign",
+		a.reporter_sign_time AS "reporterSignTime"
+	</sql>
+	
+	<sql id="nActivityMediaJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivityMedia">
+		SELECT 
+			<include refid="nActivityMediaColumns"/>
+		FROM n_activity_media a
+		<include refid="nActivityMediaJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivityMedia">
+		SELECT 
+			<include refid="nActivityMediaColumns"/>
+		FROM n_activity_media a
+		<include refid="nActivityMediaJoins"/>
+		<where>
+			
+			<if test="reporterId != null and reporterId != ''">
+				AND a.reporter_id = #{reporterId}
+			</if>
+			<if test="mediaName != null and mediaName != ''">
+				AND a.media_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{mediaName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{mediaName}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{mediaName},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivityMedia">
+		SELECT 
+			<include refid="nActivityMediaColumns"/>
+		FROM n_activity_media a
+		<include refid="nActivityMediaJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity_media(
+			activity_id,
+			reporter_id,
+			reporter_name,
+			media_id,
+			media_name,
+			reporter_is_invitation,
+			reporter_invitation_time,
+			reporter_response_time,
+			reporter_response_result,
+			reporter_response_remark,
+			reporter_response_update_time,
+			reporter_response_update_user,
+			reporter_is_sign,
+			reporter_sign_time
+		) VALUES (
+			#{activityId},
+			#{reporterId},
+			#{reporterName},
+			#{mediaId},
+			#{mediaName},
+			#{reporterIsInvitation},
+			#{reporterInvitationTime},
+			#{reporterResponseTime},
+			#{reporterResponseResult},
+			#{reporterResponseRemark},
+			#{reporterResponseUpdateTime},
+			#{reporterResponseUpdateUser},
+			#{reporterIsSign},
+			#{reporterSignTime}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity_media SET 	
+			activity_id = #{activityId},
+			reporter_id = #{reporterId},
+			reporter_name = #{reporterName},
+			media_id = #{mediaId},
+			media_name = #{mediaName},
+			reporter_is_invitation = #{reporterIsInvitation},
+			reporter_invitation_time = #{reporterInvitationTime},
+			reporter_response_time = #{reporterResponseTime},
+			reporter_response_result = #{reporterResponseResult},
+			reporter_response_remark = #{reporterResponseRemark},
+			reporter_response_update_time = #{reporterResponseUpdateTime},
+			reporter_response_update_user = #{reporterResponseUpdateUser},
+			reporter_is_sign = #{reporterIsSign},
+			reporter_sign_time = #{reporterSignTime}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity_media
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

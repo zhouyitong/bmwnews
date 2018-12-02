@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityNewsDao">
+    
+	<sql id="nActivityNewsColumns">
+		a.news_id AS "newsId",
+		a.activity_id AS "activityId",
+		a.news_title AS "newsTitle",
+		a.news_content AS "newsContent",
+		a.news_create_time AS "newsCreateTime",
+		a.news_create_user AS "newsCreateUser",
+		a.news_update_time AS "newsUpdateTime",
+		a.news_update_user AS "newsUpdateUser",
+		a.news_is_audit AS "newsIsAudit",
+		a.news_audit_user_one AS "newsAuditUserOne",
+		a.news_audit_time_one AS "newsAuditTimeOne",
+		a.news_audit_user_two AS "newsAuditUserTwo",
+		a.news_audit_time_two AS "newsAuditTimeTwo",
+		a.news_is_crontab AS "newsIsCrontab",
+		a.news_cron_time AS "newsCronTime",
+		a.news_is_delete AS "newsIsDelete",
+		a.news_like_num AS "newsLikeNum",
+		a.news_share_num AS "newsShareNum",
+		a.news_download_num AS "newsDownloadNum",
+		a.news_version AS "newsVersion"
+	</sql>
+	
+	<sql id="nActivityNewsJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivityNews">
+		SELECT 
+			<include refid="nActivityNewsColumns"/>
+		FROM n_activity_news a
+		<include refid="nActivityNewsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivityNews">
+		SELECT 
+			<include refid="nActivityNewsColumns"/>
+		FROM n_activity_news a
+		<include refid="nActivityNewsJoins"/>
+		<where>
+			
+			<if test="newsTitle != null and newsTitle != ''">
+				AND a.news_title LIKE 
+					<if test="dbName == 'oracle'">'%'||#{newsTitle}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{newsTitle}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{newsTitle},'%')</if>
+			</if>
+			<if test="newsCreateUser != null and newsCreateUser != ''">
+				AND a.news_create_user = #{newsCreateUser}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivityNews">
+		SELECT 
+			<include refid="nActivityNewsColumns"/>
+		FROM n_activity_news a
+		<include refid="nActivityNewsJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity_news(
+			news_id,
+			activity_id,
+			news_title,
+			news_content,
+			news_create_time,
+			news_create_user,
+			news_update_time,
+			news_update_user,
+			news_is_audit,
+			news_audit_user_one,
+			news_audit_time_one,
+			news_audit_user_two,
+			news_audit_time_two,
+			news_is_crontab,
+			news_cron_time,
+			news_is_delete,
+			news_like_num,
+			news_share_num,
+			news_download_num,
+			news_version
+		) VALUES (
+			#{newsId},
+			#{activityId},
+			#{newsTitle},
+			#{newsContent},
+			#{newsCreateTime},
+			#{newsCreateUser},
+			#{newsUpdateTime},
+			#{newsUpdateUser},
+			#{newsIsAudit},
+			#{newsAuditUserOne},
+			#{newsAuditTimeOne},
+			#{newsAuditUserTwo},
+			#{newsAuditTimeTwo},
+			#{newsIsCrontab},
+			#{newsCronTime},
+			#{newsIsDelete},
+			#{newsLikeNum},
+			#{newsShareNum},
+			#{newsDownloadNum},
+			#{newsVersion}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity_news SET 	
+			news_id = #{newsId},
+			activity_id = #{activityId},
+			news_title = #{newsTitle},
+			news_content = #{newsContent},
+			news_create_time = #{newsCreateTime},
+			news_create_user = #{newsCreateUser},
+			news_update_time = #{newsUpdateTime},
+			news_update_user = #{newsUpdateUser},
+			news_is_audit = #{newsIsAudit},
+			news_audit_user_one = #{newsAuditUserOne},
+			news_audit_time_one = #{newsAuditTimeOne},
+			news_audit_user_two = #{newsAuditUserTwo},
+			news_audit_time_two = #{newsAuditTimeTwo},
+			news_is_crontab = #{newsIsCrontab},
+			news_cron_time = #{newsCronTime},
+			news_is_delete = #{newsIsDelete},
+			news_like_num = #{newsLikeNum},
+			news_share_num = #{newsShareNum},
+			news_download_num = #{newsDownloadNum},
+			news_version = #{newsVersion}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity_news
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityIamgeDao">
+    
+	<sql id="nActivityIamgeColumns">
+		a.image_id AS "imageId",
+		a.activity_id AS "activityId",
+		a.image_file_path AS "imageFilePath",
+		a.image_upload_time AS "imageUploadTime",
+		a.image_upload_user AS "imageUploadUser"
+	</sql>
+	
+	<sql id="nActivityIamgeJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivityIamge">
+		SELECT 
+			<include refid="nActivityIamgeColumns"/>
+		FROM n_activity_iamge a
+		<include refid="nActivityIamgeJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivityIamge">
+		SELECT 
+			<include refid="nActivityIamgeColumns"/>
+		FROM n_activity_iamge a
+		<include refid="nActivityIamgeJoins"/>
+		<where>
+			
+			<if test="activityId != null and activityId != ''">
+				AND a.activity_id = #{activityId}
+			</if>
+			<if test="imageUploadTime != null and imageUploadTime != ''">
+				AND a.image_upload_time = #{imageUploadTime}
+			</if>
+			<if test="imageUploadUser != null and imageUploadUser != ''">
+				AND a.image_upload_user LIKE 
+					<if test="dbName == 'oracle'">'%'||#{imageUploadUser}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{imageUploadUser}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{imageUploadUser},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivityIamge">
+		SELECT 
+			<include refid="nActivityIamgeColumns"/>
+		FROM n_activity_iamge a
+		<include refid="nActivityIamgeJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity_iamge(
+			image_id,
+			activity_id,
+			image_file_path,
+			image_upload_time,
+			image_upload_user
+		) VALUES (
+			#{imageId},
+			#{activityId},
+			#{imageFilePath},
+			#{imageUploadTime},
+			#{imageUploadUser}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity_iamge SET 	
+			image_id = #{imageId},
+			activity_id = #{activityId},
+			image_file_path = #{imageFilePath},
+			image_upload_time = #{imageUploadTime},
+			image_upload_user = #{imageUploadUser}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity_iamge
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

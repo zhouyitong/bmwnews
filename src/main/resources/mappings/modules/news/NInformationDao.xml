@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NInformationDao">
+    
+	<sql id="nInformationColumns">
+		a.info_id AS "infoId",
+		a.info_title AS "infoTitle",
+		a.info_show_style AS "infoShowStyle",
+		a.info_index_image_path AS "infoIndexImagePath",
+		a.info_content AS "infoContent",
+		a.info_is_top AS "infoIsTop",
+		a.info_publisher AS "infoPublisher",
+		a.info_own_channel AS "infoOwnChannel",
+		a.info_share_num AS "infoShareNum",
+		a.info_like_num AS "infoLikeNum",
+		a.info_download_num AS "infoDownloadNum",
+		a.info_status AS "infoStatus",
+		a.info_audit_time_one AS "infoAuditTimeOne",
+		a.info_audit_user_one AS "infoAuditUserOne",
+		a.info_audit_time_two AS "infoAuditTimeTwo",
+		a.info_audit_user_two AS "infoAuditUserTwo",
+		a.info_create_time AS "infoCreateTime",
+		a.info_create_user AS "infoCreateUser",
+		a.info_update_time AS "infoUpdateTime",
+		a.info_update_user AS "infoUpdateUser",
+		a.info_version AS "infoVersion",
+		a.info_is_delete AS "infoIsDelete"
+	</sql>
+	
+	<sql id="nInformationJoins">
+	</sql>
+    
+	<select id="get" resultType="NInformation">
+		SELECT 
+			<include refid="nInformationColumns"/>
+		FROM n_information a
+		<include refid="nInformationJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NInformation">
+		SELECT 
+			<include refid="nInformationColumns"/>
+		FROM n_information a
+		<include refid="nInformationJoins"/>
+		<where>
+			
+			<if test="infoTitle != null and infoTitle != ''">
+				AND a.info_title = #{infoTitle}
+			</if>
+			<if test="infoPublisher != null and infoPublisher != ''">
+				AND a.info_publisher LIKE 
+					<if test="dbName == 'oracle'">'%'||#{infoPublisher}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{infoPublisher}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{infoPublisher},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NInformation">
+		SELECT 
+			<include refid="nInformationColumns"/>
+		FROM n_information a
+		<include refid="nInformationJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_information(
+			info_id,
+			info_title,
+			info_show_style,
+			info_index_image_path,
+			info_content,
+			info_is_top,
+			info_publisher,
+			info_own_channel,
+			info_share_num,
+			info_like_num,
+			info_download_num,
+			info_status,
+			info_audit_time_one,
+			info_audit_user_one,
+			info_audit_time_two,
+			info_audit_user_two,
+			info_create_time,
+			info_create_user,
+			info_update_time,
+			info_update_user,
+			info_version,
+			info_is_delete
+		) VALUES (
+			#{infoId},
+			#{infoTitle},
+			#{infoShowStyle},
+			#{infoIndexImagePath},
+			#{infoContent},
+			#{infoIsTop},
+			#{infoPublisher},
+			#{infoOwnChannel},
+			#{infoShareNum},
+			#{infoLikeNum},
+			#{infoDownloadNum},
+			#{infoStatus},
+			#{infoAuditTimeOne},
+			#{infoAuditUserOne},
+			#{infoAuditTimeTwo},
+			#{infoAuditUserTwo},
+			#{infoCreateTime},
+			#{infoCreateUser},
+			#{infoUpdateTime},
+			#{infoUpdateUser},
+			#{infoVersion},
+			#{infoIsDelete}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_information SET 	
+			info_id = #{infoId},
+			info_title = #{infoTitle},
+			info_show_style = #{infoShowStyle},
+			info_index_image_path = #{infoIndexImagePath},
+			info_content = #{infoContent},
+			info_is_top = #{infoIsTop},
+			info_publisher = #{infoPublisher},
+			info_own_channel = #{infoOwnChannel},
+			info_share_num = #{infoShareNum},
+			info_like_num = #{infoLikeNum},
+			info_download_num = #{infoDownloadNum},
+			info_status = #{infoStatus},
+			info_audit_time_one = #{infoAuditTimeOne},
+			info_audit_user_one = #{infoAuditUserOne},
+			info_audit_time_two = #{infoAuditTimeTwo},
+			info_audit_user_two = #{infoAuditUserTwo},
+			info_create_time = #{infoCreateTime},
+			info_create_user = #{infoCreateUser},
+			info_update_time = #{infoUpdateTime},
+			info_update_user = #{infoUpdateUser},
+			info_version = #{infoVersion},
+			info_is_delete = #{infoIsDelete}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_information
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

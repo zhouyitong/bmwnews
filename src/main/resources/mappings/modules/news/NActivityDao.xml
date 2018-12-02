@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmw.news.modules.news.dao.NActivityDao">
+    
+	<sql id="nActivityColumns">
+		a.activity_id AS "activityId",
+		a.activity_name AS "activityName",
+		a.activity_start_time AS "activityStartTime",
+		a.activity_end_time AS "activityEndTime",
+		a.activity_status AS "activityStatus",
+		a.activity_brochure_image AS "activityBrochureImage",
+		a.activity_create_time AS "activityCreateTime",
+		a.activity_create_user AS "activityCreateUser",
+		a.activity_update_time AS "activityUpdateTime",
+		a.activity_update_user AS "activityUpdateUser",
+		a.activity_remark AS "activityRemark",
+		a.activity_is_delete AS "activityIsDelete",
+		a.activity_version AS "activityVersion"
+	</sql>
+	
+	<sql id="nActivityJoins">
+	</sql>
+    
+	<select id="get" resultType="NActivity">
+		SELECT 
+			<include refid="nActivityColumns"/>
+		FROM n_activity a
+		<include refid="nActivityJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="NActivity">
+		SELECT 
+			<include refid="nActivityColumns"/>
+		FROM n_activity a
+		<include refid="nActivityJoins"/>
+		<where>
+			
+			<if test="activityName != null and activityName != ''">
+				AND a.activity_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{activityName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{activityName}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{activityName},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="NActivity">
+		SELECT 
+			<include refid="nActivityColumns"/>
+		FROM n_activity a
+		<include refid="nActivityJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		<selectKey resultType="java.lang.String" order="BEFORE"   keyProperty="id"> 
+			SELECT uuid_short()
+		</selectKey> 
+		INSERT INTO n_activity(
+			activity_id,
+			activity_name,
+			activity_start_time,
+			activity_end_time,
+			activity_status,
+			activity_brochure_image,
+			activity_create_time,
+			activity_create_user,
+			activity_update_time,
+			activity_update_user,
+			activity_remark,
+			activity_is_delete,
+			activity_version
+		) VALUES (
+			#{activityId},
+			#{activityName},
+			#{activityStartTime},
+			#{activityEndTime},
+			#{activityStatus},
+			#{activityBrochureImage},
+			#{activityCreateTime},
+			#{activityCreateUser},
+			#{activityUpdateTime},
+			#{activityUpdateUser},
+			#{activityRemark},
+			#{activityIsDelete},
+			#{activityVersion}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE n_activity SET 	
+			activity_id = #{activityId},
+			activity_name = #{activityName},
+			activity_start_time = #{activityStartTime},
+			activity_end_time = #{activityEndTime},
+			activity_status = #{activityStatus},
+			activity_brochure_image = #{activityBrochureImage},
+			activity_create_time = #{activityCreateTime},
+			activity_create_user = #{activityCreateUser},
+			activity_update_time = #{activityUpdateTime},
+			activity_update_user = #{activityUpdateUser},
+			activity_remark = #{activityRemark},
+			activity_is_delete = #{activityIsDelete},
+			activity_version = #{activityVersion}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM n_activity
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
